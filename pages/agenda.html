@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare Planner | Agenda</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/agenda.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🐾 PetCare Planner</div>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./agenda.html" class="nav-active">Agenda</a></li>
+                <li><a href="./perfil.html">Mis Mascotas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="agenda-header">
+            <h1>Agenda de Cuidados</h1>
+            <button class="btn-primary" id="btn-nueva-tarea">+ Nueva Tarea</button>
+        </section>
+
+        <section class="filtros">
+            <button class="filtro-btn active" data-filtro="todas">Todas</button>
+            <button class="filtro-btn" data-filtro="pendiente">Pendientes</button>
+            <button class="filtro-btn" data-filtro="realizada">Realizadas</button>
+            <button class="filtro-btn" data-filtro="vencida">Vencidas</button>
+        </section>
+
+        <section class="tareas-container" id="tareas-container">
+            <p class="empty-state" id="empty-msg">No hay tareas registradas todavía.</p>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-titulo">Nueva Tarea</h2>
+                <button class="modal-cerrar" id="btn-cerrar-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="tarea-id">
+
+                <label for="tarea-mascota">Mascota</label>
+                <select id="tarea-mascota">
+                    <option value="">-- Seleccioná una mascota --</option>
+                </select>
+
+                <label for="tarea-tipo">Tipo de cuidado</label>
+                <select id="tarea-tipo">
+                    <option value="vacuna">💉Vacuna</option>
+                    <option value="paseo">🦮Paseo</option>
+                    <option value="comida">🍖Comida especial</option>
+                    <option value="baño">🛁Baño</option>
+                    <option value="medicamento">💊Medicamento</option>
+                    <option value="veterinario">🏥Visita al veterinario</option>
+                    <option value="otro">📝Otro</option>
+                </select>
+
+                <label for="tarea-descripcion">Descripción</label>
+                <input type="text" id="tarea-descripcion" placeholder="Ej: Vacuna antirrábica anual">
+
+                <label for="tarea-fecha">Fecha</label>
+                <input type="date" id="tarea-fecha">
+
+                <div class="modal-footer">
+                    <button class="btn-secundario" id="btn-cancelar">Cancelar</button>
+                    <button class="btn-primary" id="btn-guardar-tarea">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PetCare Planner - Orientado al cuidado personal de tus mascotas</p>
+    </footer>
+
+    <script src="../assets/js/agenda.js"></script>
+</body>
+</html>
