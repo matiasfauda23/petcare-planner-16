@@ -22,7 +22,7 @@ function obtenerTareas() {
     {
       id: 1,
       titulo: "Vacuna Antirrábica",
-      fecha: "2026-05-20",
+      fecha: "2027-05-20",
       descripcion: "Llevar a la veterinaria para la vacuna anual",
       estado: "pendiente",
     },
