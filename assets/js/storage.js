@@ -51,3 +51,18 @@ function obtenerTareas() {
   localStorage.setItem(TAREA_KEY, JSON.stringify(tareasDefault));
   return tareasDefault;
 }
+const guardarMascota = (nuevaMascota) => {
+    // 1. Obtenemos lo que ya existe (o un array vacío si no hay nada)
+    const mascotas = obtenerMascotas();
+    
+    // 2. Agregamos la nueva mascota al array
+    mascotas.push(nuevaMascota);
+    
+    // 3. Guardamos el array completo de nuevo
+    localStorage.setItem("misMascotas", JSON.stringify(mascotas));
+};
+
+const obtenerMascotas = () => {
+    const datos = localStorage.getItem("misMascotas");
+    return datos ? JSON.parse(datos) : []; // Si es null, devuelve []
+};
