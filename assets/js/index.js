@@ -97,7 +97,12 @@ function renderizarTareas(tareas) {
       '<p class="empty-state">No hay tareas pendientes por el momento.</p>';
     return;
   }
-  const tarjetasHTML = tareas.map((tarea) => generarTarjeta(tarea)).join("");
+  const tareasOrdenadas = [...tareas].sort((a, b) =>
+    a.fecha.localeCompare(b.fecha),
+  );
+  const tarjetasHTML = tareasOrdenadas
+    .map((tarea) => generarTarjeta(tarea))
+    .join("");
   contenedor.innerHTML = tarjetasHTML;
 }
 /**
