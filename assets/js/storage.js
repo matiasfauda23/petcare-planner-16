@@ -50,4 +50,22 @@ function obtenerTareas() {
   ];
   localStorage.setItem(TAREA_KEY, JSON.stringify(tareasDefault));
   return tareasDefault;
-}
+} 
+
+/**
+ * Módulo para gestionar el almacenamiento local
+ */
+const STORAGE_KEY = "misMascotas";
+
+// Obtiene todas las mascotas guardadas
+const getMascotas = () => {
+    const datos = localStorage.getItem(STORAGE_KEY);
+    return datos ? JSON.parse(datos) : [];
+};
+
+// Guarda una nueva mascota en el array existente
+const saveMascota = (mascota) => {
+    const mascotas = getMascotas();
+    mascotas.push(mascota);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas));
+};
