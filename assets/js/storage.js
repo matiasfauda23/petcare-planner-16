@@ -69,3 +69,6 @@ const saveMascota = (mascota) => {
     mascotas.push(mascota);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas));
 };
+const saveTareas = (tareas) => {
+    localStorage.setItem(TAREA_KEY, JSON.stringify(tareas));
+};
