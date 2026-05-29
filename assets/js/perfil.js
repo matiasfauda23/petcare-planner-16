@@ -33,7 +33,7 @@ function renderizarMascotas() {
         <div class="card-mascota-individual">
             <div class="card-mascota-header">
                 <h3>${m.emoji || "🐾"} ${m.nombre || m.full_name}</h3>
-                <button class="btn-eliminar-mascota" data-id="${m.id}">🗑 Eliminar</button>
+                <button class="btn-icono btn-eliminar btn-eliminar-mascota" data-id="${m.id}">🗑 Eliminar</button>
             </div>
             <p><strong>Género:</strong> ${m.gender}</p>
             <p><strong>Especie:</strong> ${m.species}</p>
