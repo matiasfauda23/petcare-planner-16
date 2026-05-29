@@ -55,7 +55,7 @@ function obtenerTareas() {
 /**
  * Módulo para gestionar el almacenamiento local
  */
-const STORAGE_KEY = "misMascotas";
+const STORAGE_KEY = "petcare_mascotas";
 
 // Obtiene todas las mascotas guardadas
 const getMascotas = () => {
