@@ -33,7 +33,7 @@ function renderizarMascotas() {
         <div class="card-mascota-individual">
             <div class="card-mascota-header">
                 <h3>${m.emoji || "🐾"} ${m.nombre || m.full_name}</h3>
-                <button class="btn-eliminar-mascota" data-id="${m.id}">🗑 Eliminar</button>
+                <button class="btn-icono btn-eliminar btn-eliminar-mascota" data-id="${m.id}">🗑 Eliminar</button>
             </div>
             <p><strong>Género:</strong> ${m.gender}</p>
             <p><strong>Especie:</strong> ${m.species}</p>
@@ -48,9 +48,14 @@ function renderizarMascotas() {
     // Eventos para eliminar
     profileContent.querySelectorAll(".btn-eliminar-mascota").forEach((btn) => {
         btn.addEventListener("click", () => {
-            if (!confirm("¿Eliminar esta mascota?")) return;
-            eliminarMascota(btn.dataset.id);
-            renderizarMascotas();
+            showConfirmModal(
+                "¿Eliminar esta mascota?",
+                "Esta acción no se puede deshacer",
+                () => {
+                    eliminarMascota(btn.dataset.id);
+                    renderizarMascotas();
+                }
+            );
         });
     });
 }

@@ -72,3 +72,54 @@ const saveMascota = (mascota) => {
 const saveTareas = (tareas) => {
     localStorage.setItem(TAREA_KEY, JSON.stringify(tareas));
 };
+
+let confirmModalCallback = null;
+
+function showConfirmModal(title, message, onConfirm) {
+    confirmModalCallback = onConfirm;
+
+    let overlay = document.getElementById('confirm-modal-overlay');
+    if (!overlay) {
+        const modalHTML = `
+        <div id="confirm-modal-overlay" class="confirm-modal-overlay">
+            <div class="confirm-modal-box">
+                <h3 id="confirm-modal-title"></h3>
+                <p id="confirm-modal-message"></p>
+                <div class="confirm-modal-buttons">
+                    <button id="confirm-btn-cancelar" class="btn-cancelar-confirm">Cancelar</button>
+                    <button id="confirm-btn-eliminar" class="btn-eliminar-confirm">Eliminar</button>
+                </div>
+            </div>
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        overlay = document.getElementById('confirm-modal-overlay');
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeConfirmModal();
+        });
+    }
+
+    document.getElementById('confirm-modal-title').textContent = title;
+    document.getElementById('confirm-modal-message').textContent = message;
+    overlay.classList.add('visible');
+
+    const btnCancelar = document.getElementById('confirm-btn-cancelar');
+    const btnEliminar = document.getElementById('confirm-btn-eliminar');
+
+    const newBtnCancelar = btnCancelar.cloneNode(true);
+    const newBtnEliminar = btnEliminar.cloneNode(true);
+    btnCancelar.parentNode.replaceChild(newBtnCancelar, btnCancelar);
+    btnEliminar.parentNode.replaceChild(newBtnEliminar, btnEliminar);
+
+    newBtnCancelar.addEventListener('click', closeConfirmModal);
+    newBtnEliminar.addEventListener('click', () => {
+        if (confirmModalCallback) confirmModalCallback();
+        closeConfirmModal();
+    });
+}
+
+function closeConfirmModal() {
+    const overlay = document.getElementById('confirm-modal-overlay');
+    if (overlay) overlay.classList.remove('visible');
+    confirmModalCallback = null;
+}

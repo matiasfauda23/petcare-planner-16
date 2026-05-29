@@ -95,12 +95,61 @@ main {
     /* Estilos para Desktop */
 }
 /* =========================================
-   6. ESTILOS ESPECÍFICOS: HEADER Y NAV
+   7. MODAL CONFIRMACIÓN (Inyectado dinámicamente)
 ========================================= */
-header {
-    background-color: var(--card-bg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: var(--spacing-md);
+.confirm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.confirm-modal-overlay.visible { display: flex; }
+
+.confirm-modal-box {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.confirm-modal-box h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+.confirm-modal-box p {
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+}
+.confirm-modal-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+.confirm-modal-buttons button {
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-cancelar-confirm {
+    background: var(--border-color);
+    color: var(--text-color);
+}
+.btn-cancelar-confirm:hover {
+    background: #c5c5c5;
+}
+.btn-eliminar-confirm {
+    background: #e74c3c;
+    color: white;
+}
+.btn-eliminar-confirm:hover {
+    background: #c0392b;
 }
 
 nav {
