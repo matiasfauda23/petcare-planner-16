@@ -175,10 +175,15 @@ function editarTarea(id) {
     if (tarea) abrirModal(tarea);
 }
 function eliminarTarea(id) {
-    if (!confirm('¿Eliminar esta tarea?')) return;
-    const tareas = obtenerTareas().filter(t => t.id !== id);
-    saveTareas(tareas);
-    renderTareas();
+    showConfirmModal(
+        '¿Eliminar esta tarea?',
+        'Esta acción no se puede deshacer',
+        () => {
+            const tareas = obtenerTareas().filter(t => t.id !== id);
+            saveTareas(tareas);
+            renderTareas();
+        }
+    );
 }
 function activarFiltro(filtro) {
     filtroActivo = filtro;

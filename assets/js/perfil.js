@@ -48,9 +48,14 @@ function renderizarMascotas() {
     // Eventos para eliminar
     profileContent.querySelectorAll(".btn-eliminar-mascota").forEach((btn) => {
         btn.addEventListener("click", () => {
-            if (!confirm("¿Eliminar esta mascota?")) return;
-            eliminarMascota(btn.dataset.id);
-            renderizarMascotas();
+            showConfirmModal(
+                "¿Eliminar esta mascota?",
+                "Esta acción no se puede deshacer",
+                () => {
+                    eliminarMascota(btn.dataset.id);
+                    renderizarMascotas();
+                }
+            );
         });
     });
 }
