@@ -20,28 +20,28 @@ function obtenerTareas() {
   }
   const tareasDefault = [
     {
-      id: 1,
+      id: "1",
       titulo: "Vacuna Antirrábica",
       fecha: "2027-05-20",
       descripcion: "Llevar a la veterinaria para la vacuna anual",
       estado: "pendiente",
     },
     {
-      id: 2,
+      id: "2",
       titulo: "Desparasitación",
       fecha: "2026-05-24",
       descripcion: "Aplicar tratamiento antiparasitario",
       estado: "pendiente",
     },
     {
-      id: 3,
+      id: "3",
       titulo: "Corte de pelo",
       fecha: "2026-05-28",
       descripcion: "Separar turno con el estilista canino",
       estado: "pendiente",
     },
     {
-      id: 4,
+      id: "4",
       titulo: "Revisión dental",
       fecha: "2026-06-05",
       descripcion: "Chequeo anual de dentadura",

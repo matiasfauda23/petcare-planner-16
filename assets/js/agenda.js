@@ -208,5 +208,3 @@ document.querySelectorAll('.filtro-btn').forEach(btn => {
 });
 
 document.addEventListener('DOMContentLoaded', renderTareas);
-
-
