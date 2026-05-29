@@ -33,4 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // 4. Limpiamos el formulario (esto resetea los selects a "Selecciona una opción")
         petForm.reset();
     });
-});
+}); 
+
+function saveMascotaParaAgenda(mascotaForm) {
+    const STORAGE_KEY = 'petcare_mascotas';
+    const mascotas = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+    
+    const mascotaIntegrada = {
+        id: Date.now().toString(), 
+        nombre: mascotaForm.full_name,
+        emoji: '🐾', 
+        ...mascotaForm 
+    };
+
+    mascotas.push(mascotaIntegrada);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas)); }

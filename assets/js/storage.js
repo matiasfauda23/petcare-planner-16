@@ -22,7 +22,7 @@ function obtenerTareas() {
     {
       id: 1,
       titulo: "Vacuna Antirrábica",
-      fecha: "2026-05-20",
+      fecha: "2027-05-20",
       descripcion: "Llevar a la veterinaria para la vacuna anual",
       estado: "pendiente",
     },
@@ -55,7 +55,7 @@ function obtenerTareas() {
 /**
  * Módulo para gestionar el almacenamiento local
  */
-const STORAGE_KEY = "misMascotas";
+const STORAGE_KEY = "petcare_mascotas";
 
 // Obtiene todas las mascotas guardadas
 const getMascotas = () => {
@@ -68,4 +68,7 @@ const saveMascota = (mascota) => {
     const mascotas = getMascotas();
     mascotas.push(mascota);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas));
+};
+const saveTareas = (tareas) => {
+    localStorage.setItem(TAREA_KEY, JSON.stringify(tareas));
 };
