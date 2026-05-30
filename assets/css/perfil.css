@@ -59,7 +59,7 @@ label {
 
 .campo:focus, .field:focus, input:focus, select:focus, textarea:focus {
     border-color: #40916c;
-    box-shadow: 0 0 8px rgb(66, 122, 97);
+    box-shadow: 0 0 8px #427a61;
 }
 
 .btn-primary {
@@ -108,10 +108,10 @@ label {
 }
 
 .card-mascota-individual:hover {
-    background-color: #f0fff4;    /* Un tono un poco más claro o distinto al original */
-    border: 1px solid #40916c;   /* Un borde que resalta al pasar el mouse */
-    transform: translateY(-5px); /* Un pequeño efecto de elevación */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más pronunciada */ 
+    background-color: #f0fff4;    
+    border: 1px solid #40916c;   
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px #00000026; 
 }
 
 
@@ -119,7 +119,7 @@ label {
     background: var(--card-bg);
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px #0000001a;
 }
 
 .card-mascota-individual:last-child {
