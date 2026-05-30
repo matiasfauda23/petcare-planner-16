@@ -54,7 +54,7 @@ label {
 }
 
 .campo:hover, .field:hover, input:hover, select:hover, textarea:hover, .container-profile:hover {
-    border-color: #728315;
+    border-color:#728315;
 }
 
 .campo:focus, .field:focus, input:focus, select:focus, textarea:focus {
@@ -98,7 +98,22 @@ label {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+} 
+
+#profile-content p { 
+    background: var(--card-bg);
+    border-radius: 8px; 
+    padding: 10px;
+    
 }
+
+.card-mascota-individual:hover {
+    background-color: #f0fff4;    /* Un tono un poco más claro o distinto al original */
+    border: 1px solid #40916c;   /* Un borde que resalta al pasar el mouse */
+    transform: translateY(-5px); /* Un pequeño efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más pronunciada */ 
+}
+
 
 .card-mascota-individual {
     background: var(--card-bg);
