@@ -1,0 +1,191 @@
+/* =========================================
+   1. VARIABLES GLOBALES (Design System)
+========================================= */
+:root {
+    /* Paleta de Colores */
+    --primary-color: #49c74e; 
+    --primary-hover: #abebae;
+    --bg-color: #b2e2d2;
+    --text-color: #333333;
+    --text-muted: #777777;
+    --card-bg: #ecfcf2;
+    --border-color: #dddddd;
+
+    /* Espaciados y Tamaños */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --border-radius: 8px;
+    
+    /* Tipografia */
+    --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* =========================================
+   2. RESET Y ESTILOS BASE
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Para que el footer quede abajo */
+}
+
+header {
+    padding: var(--spacing-md); /* Esto me permite cambiar el fondo del nav*/
+    width: 100%;
+    background-color:var(--card-bg)
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Contenedor principal para limitar el ancho en pantallas grandes */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* =========================================
+   3. COMPONENTES GLOBALES (Botones, Inputs)
+========================================= */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+/* =========================================
+   4. LAYOUT MOBILE FIRST (Por defecto)
+========================================= */
+
+
+/* =========================================
+   5. MEDIA QUERIES (Tablet & Desktop)
+========================================= */
+@media (min-width: 768px) {
+    /* Estilos para pantallas medianas (Tablets) en adelante */
+    main {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Estilos para Desktop */
+}
+/* =========================================
+   7. MODAL CONFIRMACIÓN (Inyectado dinámicamente)
+========================================= */
+.confirm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.confirm-modal-overlay.visible { display: flex; }
+
+.confirm-modal-box {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.confirm-modal-box h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+.confirm-modal-box p {
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+}
+.confirm-modal-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+.confirm-modal-buttons button {
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-cancelar-confirm {
+    background: var(--border-color);
+    color: var(--text-color);
+}
+.btn-cancelar-confirm:hover {
+    background: #c5c5c5;
+}
+.btn-eliminar-confirm {
+    background: #e74c3c;
+    color: white;
+}
+.btn-eliminar-confirm:hover {
+    background: #c0392b;
+}
+
+nav {
+    display: flex;
+    flex-direction: column; /* Mobile first: elementos apilados */
+    align-items: center;
+    gap: var(--spacing-md);
+    
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);    
+    width: 100%;
+}
+
+nav ul li a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}

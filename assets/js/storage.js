@@ -1,0 +1,125 @@
+/**
+ * Módulo de almacenamiento para tareas de mascotas
+ * Gestiona lectura/escritura de tareas en localStorage
+ */
+const TAREA_KEY = "petcare_tareas";
+/**
+ * Obtiene las tareas desde localStorage.
+ * Si no existe ninguna, crea un set de datos iniciales de prueba.
+ * @returns {Array} Array de objetos tarea
+ */
+function obtenerTareas() {
+  const stored = localStorage.getItem(TAREA_KEY);
+  if (stored && stored.trim() !== "") {
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      console.error("Error al parsear tareas:", e);
+      return [];
+    }
+  }
+  const tareasDefault = [
+    {
+      id: "1",
+      titulo: "Vacuna Antirrábica",
+      fecha: "2027-05-20",
+      descripcion: "Llevar a la veterinaria para la vacuna anual",
+      estado: "pendiente",
+    },
+    {
+      id: "2",
+      titulo: "Desparasitación",
+      fecha: "2026-05-24",
+      descripcion: "Aplicar tratamiento antiparasitario",
+      estado: "pendiente",
+    },
+    {
+      id: "3",
+      titulo: "Corte de pelo",
+      fecha: "2026-05-28",
+      descripcion: "Separar turno con el estilista canino",
+      estado: "pendiente",
+    },
+    {
+      id: "4",
+      titulo: "Revisión dental",
+      fecha: "2026-06-05",
+      descripcion: "Chequeo anual de dentadura",
+      estado: "pendiente",
+    },
+  ];
+  localStorage.setItem(TAREA_KEY, JSON.stringify(tareasDefault));
+  return tareasDefault;
+} 
+
+/**
+ * Módulo para gestionar el almacenamiento local
+ */
+const STORAGE_KEY = "petcare_mascotas";
+
+// Obtiene todas las mascotas guardadas
+const getMascotas = () => {
+    const datos = localStorage.getItem(STORAGE_KEY);
+    return datos ? JSON.parse(datos) : [];
+};
+
+// Guarda una nueva mascota en el array existente
+const saveMascota = (mascota) => {
+    const mascotas = getMascotas();
+    mascotas.push(mascota);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas));
+};
+const saveTareas = (tareas) => {
+    localStorage.setItem(TAREA_KEY, JSON.stringify(tareas));
+};
+
+let confirmModalCallback = null;
+
+function showConfirmModal(title, message, onConfirm) {
+    confirmModalCallback = onConfirm;
+
+    let overlay = document.getElementById('confirm-modal-overlay');
+    if (!overlay) {
+        const modalHTML = `
+        <div id="confirm-modal-overlay" class="confirm-modal-overlay">
+            <div class="confirm-modal-box">
+                <h3 id="confirm-modal-title"></h3>
+                <p id="confirm-modal-message"></p>
+                <div class="confirm-modal-buttons">
+                    <button id="confirm-btn-cancelar" class="btn-cancelar-confirm">Cancelar</button>
+                    <button id="confirm-btn-eliminar" class="btn-eliminar-confirm">Eliminar</button>
+                </div>
+            </div>
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        overlay = document.getElementById('confirm-modal-overlay');
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeConfirmModal();
+        });
+    }
+
+    document.getElementById('confirm-modal-title').textContent = title;
+    document.getElementById('confirm-modal-message').textContent = message;
+    overlay.classList.add('visible');
+
+    const btnCancelar = document.getElementById('confirm-btn-cancelar');
+    const btnEliminar = document.getElementById('confirm-btn-eliminar');
+
+    const newBtnCancelar = btnCancelar.cloneNode(true);
+    const newBtnEliminar = btnEliminar.cloneNode(true);
+    btnCancelar.parentNode.replaceChild(newBtnCancelar, btnCancelar);
+    btnEliminar.parentNode.replaceChild(newBtnEliminar, btnEliminar);
+
+    newBtnCancelar.addEventListener('click', closeConfirmModal);
+    newBtnEliminar.addEventListener('click', () => {
+        if (confirmModalCallback) confirmModalCallback();
+        closeConfirmModal();
+    });
+}
+
+function closeConfirmModal() {
+    const overlay = document.getElementById('confirm-modal-overlay');
+    if (overlay) overlay.classList.remove('visible');
+    confirmModalCallback = null;
+}
